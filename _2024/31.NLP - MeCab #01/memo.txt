@@ -1,0 +1,6 @@
+git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git
+cd mecab-ipadic-neologd
+cp -r ./seed/ ./src
+cd src
+7z X *.xz
+mecab-dict-index -d "D:\MeCab\dic\ipadic" -u NEologD.20200910-u.dic -f utf-8 -t utf-8 mecab-user-dict-seed.20200910.csv

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image</title>
+</head>
+<body>
+    <h1>Upload Image from Camera</h1>
+    <video id="video" width="640" height="480" autoplay></video>
+    <button id="snap">Capture</button>
+    <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+    <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="fileInput" style="display:none;">
+        <input type="hidden" name="filename" id="filename">
+        <button type="submit">Upload</button>
+    </form>
+
+    <script>
+        // Access the camera and capture an image
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+        const snap = document.getElementById('snap');
+        const fileInput = document.getElementById('fileInput');
+        const uploadForm = document.getElementById('uploadForm');
+        const filenameInput = document.getElementById('filename');
+
+        // Check for camera access
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then((stream) => {
+                video.srcObject = stream;
+            })
+            .catch((err) => {
+                console.error("Error accessing the camera: ", err);
+                alert("Error accessing the camera. Please check your permissions.");
+            });
+
+        snap.addEventListener('click', () => {
+            context.drawImage(video, 0, 0, 640, 480);
+            canvas.toBlob((blob) => {
+                const file = new File([blob], "capture.png", { type: 'image/png' });
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(file);
+                fileInput.files = dataTransfer.files;
+                filenameInput.value = "capture.png";
+            });
+        });
+
+        uploadForm.addEventListener('submit', (event) => {
+            if (!fileInput.files.length) {
+                event.preventDefault();
+                alert("Please capture an image first.");
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!-- ./templates/index.html -->
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>写真の撮影</h1>
+    <p><video id="video" width="320" height="240" autoplay></video></p>
+    <p><button id="snap">写真の撮影</button></p>
+    <p><canvas id="canvas" width="320" height="240"></canvas></p>
+    <script src="{{url_for('static', filename='script.js')}}"></script>
+</body>
+</html>

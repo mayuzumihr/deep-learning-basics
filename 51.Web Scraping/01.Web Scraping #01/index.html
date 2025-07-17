@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>スクレイピング練習ページ</title>
+  <style>
+    body{font-family:sans-serif;margin:40px;}
+    .section-title{color:#0066cc;}
+    .item{margin:4px 0;}
+    .footer{margin-top:40px;font-size:0.9rem;color:#555;}
+  </style>
+</head>
+<body>
+  <h1 id="main-title" class="title">スクレイピング練習ページ</h1>
+
+  <div id="products">
+    <h2 class="section-title">商品一覧</h2>
+      <p class="item" data-price="1200">りんご</p>
+      <p class="item" data-price="800">みかん</p>
+      <p class="item" data-price="1500">ぶどう</p>
+  </div>
+
+  <div id="news">
+    <h2 class="section-title">最新ニュース</h2>
+    <p class="news-item" data-id="n001">AI 技術が進化しています</p>
+    <p class="news-item" data-id="n002">Python 4.0 がリリース予定</p>
+  </div>
+
+  <footer id="page-footer" class="footer">
+    <p>お問い合わせ: <a id="contact-mail" href="mailto:info@example.com">info@example.com</a></p>
+  </footer>
+</body>
+</html>

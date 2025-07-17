@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <script src="{{url_for('static', filename='script.js')}}"></script>
+</head>
+<body>
+    <h1>写真の分析</h1>
+    <form id="uploadForm" action="/" method="POST" enctype="multipart/form-data">
+        <p><video id="video" width="640" height="480" autoplay></video></p>
+        <p><button id="snap">アップロード</button></p>
+        <p><canvas id="canvas" width="640" height="480" style="display:none;"></canvas></p>
+        <p><input type="file" name="file" id="file" style="display:none;"></p>
+        <p><input type="submit" value="アップロード"></p>
+    </form>
+    <p>{{message}}</p>
+</body>
+</html>

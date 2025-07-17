@@ -1,0 +1,29 @@
+# %USERPROFILE%\openssl.cnf
+
+[ req ]
+default_bits       = 2048
+default_md         = sha256
+default_keyfile    = privkey.pem
+distinguished_name = req_distinguished_name
+req_extensions     = req_ext
+
+[ req_distinguished_name ]
+countryName                 = Country Name (2 letter code)
+countryName_default         = JP
+stateOrProvinceName         = State or Province Name (full name)
+stateOrProvinceName_default = Tokyo
+localityName                = Locality Name (eg, city)
+localityName_default        = Kamata
+organizationName            = Organization Name (eg, company)
+organizationName_default    = NEEC
+organizationalUnitName      = Organizational Unit Name (eg, section)
+organizationalUnitName_default = IT College
+commonName                  = Common Name (eg, server FQDN or YOUR name)
+commonName_default          = www.example.local
+
+[ req_ext ]
+subjectAltName = @alt_names
+
+[ alt_names ]
+DNS.1   = www.example.local
+DNS.2   = example.local
